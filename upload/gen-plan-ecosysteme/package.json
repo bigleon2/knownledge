@@ -1,0 +1,86 @@
+
+**Technologies** :
+- Next.js 16 (framework)
+- TypeScript (langage)
+- Tailwind CSS 4 (styling)
+- Prisma ORM (base de données)
+- SQLite (base de données locale, simple)
+
+---
+
+## 📋 Étape 3 — Identification de la Nature du Projet ✓
+
+| Critère | Valeur |
+|---------|--------|
+| **Type** | Application web fullstack + génération de document |
+| **Technologies** | Next.js 16, TypeScript, Tailwind CSS 4, Prisma, SQLite |
+| **Architecture** | Monolithique fullstack (API routes + composants React) |
+| **Complexité** | Moyenne (CRUD simple + rapport PDF) |
+
+---
+
+## 📋 Étape 4 — Identification des Objectifs ✓
+
+1. **O1** : Configurer le projet Next.js avec TypeScript et Tailwind
+2. **O2** : Définir le schéma de base de données Prisma (modèle Track)
+3. **O3** : Créer l'API REST pour les opérations CRUD sur les morceaux
+4. **O4** : Développer l'interface utilisateur (liste, formulaire d'ajout, bouton suppression)
+5. **O5** : Implémenter la génération de rapport PDF
+6. **O6** : Tester l'application de bout en bout
+
+---
+
+## 📋 Étape 5 — Décomposition en Sous-tâches ✓
+
+### T1 — Initialisation du projet
+- **Objectif** : Créer la structure Next.js avec toutes les dépendances
+- **Fichiers concernés** : `package.json`, `next.config.js`, `tsconfig.json`, `tailwind.config.js`
+- **Dépendances** : aucune
+- **Priorité** : **critique**
+- **Critère de validation** : `npm run dev` démarre sans erreur
+- **Adaptation au projet** : Utiliser Next.js 16 + TypeScript + Tailwind CSS 4
+
+### T2 — Configuration de la base de données
+- **Objectif** : Définir le modèle Track dans Prisma
+- **Fichiers concernés** : `prisma/schema.prisma`
+- **Dépendances** : après T1
+- **Priorité** : **critique**
+- **Critère de validation** : `npx prisma migrate dev` crée la table sans erreur
+- **Adaptation au projet** : Champs : id, title, artist, bpm, key, duration, genre, dateAdded
+
+### T3 — Création de l'API REST
+- **Objectif** : Implémenter les endpoints GET, POST, DELETE pour /api/tracks
+- **Fichiers concernés** : `src/app/api/tracks/route.ts`
+- **Dépendances** : après T2
+- **Priorité** : **critique**
+- **Critère de validation** : Les 3 endpoints répondent correctement (test avec curl)
+- **Adaptation au projet** : Validation des entrées, gestion des erreurs
+
+### T4 — Développement de l'interface utilisateur
+- **Objectif** : Créer les composants React pour la liste, le formulaire et la suppression
+- **Fichiers concernés** : `src/components/TrackList.tsx`, `src/components/TrackForm.tsx`, `src/app/page.tsx`
+- **Dépendances** : après T3
+- **Priorité** : **importante**
+- **Critère de validation** : Interface fonctionnelle, responsive, BPM/tonalité/durée visibles
+- **Adaptation au projet** : Design DJ-friendly (contrastes élevés, lisibilité)
+
+### T5 — Génération du rapport PDF
+- **Objectif** : Créer une fonction qui génère un PDF avec tableau des morceaux et statistiques
+- **Fichiers concernés** : `src/lib/pdfGenerator.ts`, `src/app/api/report/route.ts`
+- **Dépendances** : après T4
+- **Priorité** : **importante**
+- **Critère de validation** : PDF généré avec tableau lisible et statistiques (nombre total, BPM moyen, répartition par genre)
+- **Adaptation au projet** : Utiliser le skill `pdf` pour la génération
+
+### T6 — Tests de bout en bout
+- **Objectif** : Vérifier que toutes les fonctionnalités marchent ensemble
+- **Fichiers concernés** : Tous
+- **Dépendances** : après T5
+- **Priorité** : **critique**
+- **Critère de validation** : Ajout/suppression de morceaux fonctionnel, rapport PDF généré correctement
+- **Adaptation au projet** : Test avec 5-10 morceaux fictifs
+
+---
+
+## 📋 Étape 6 — Détection des Dépendances ✓
+
